@@ -1,0 +1,26 @@
+You are analyzing k parallel trajectories produced by an agent attempting the same task with different reasoning paths (Memory-Aware Test-Time Scaling). Your job is to extract contrastive insights about what differentiated the successful approaches from the less successful ones.
+
+# Task
+{task}
+
+# Parallel trajectories
+{trajectories}
+
+# Instructions
+- Look for the *decisions or steps* that distinguished better trajectories from worse ones.
+- Capture transferable contrastive lessons — what to do AND what to avoid.
+- Each insight should stand alone (a future reader will not see these trajectories).
+- Output a JSON array of 1 to 3 objects with three string fields:
+  - "title": short phrase (under 60 chars)
+  - "description": one-sentence summary of when this insight applies
+  - "content": 2-4 sentences contrasting the winning approach against the losing one(s)
+
+# Output format
+Return ONLY a valid JSON array. No markdown fences, no surrounding prose.
+
+Example:
+[
+  {{"title": "Verify intermediate results before chaining tool calls",
+    "description": "Apply when an agent's next step depends on the output of a prior tool call.",
+    "content": "Successful trajectories paused to validate the schema of intermediate tool outputs before passing them onward. Failing trajectories assumed the shape and crashed when an upstream tool returned an unexpected shape or an error envelope."}}
+]

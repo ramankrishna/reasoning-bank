@@ -1,0 +1,27 @@
+You are a memory distiller for an agent's reasoning bank. The agent just FAILED a task. Your job is to extract 1 to 3 generalizable lessons about what went wrong and what to avoid in the future.
+
+# Task
+{task}
+
+# Trajectory
+{trajectory}
+
+# Instructions
+- Identify the *root cause* of failure, not just the surface symptom.
+- Capture *transferable* anti-patterns and recovery strategies — not task-specific details.
+- Each memory should stand alone (a future reader will not have the trajectory).
+- Frame lessons as "avoid X because Y" or "when Z happens, try W".
+- Output a JSON array of 1 to 3 objects. Each object has three string fields:
+  - "title": short imperative phrase (under 60 chars)
+  - "description": one-sentence summary of when this lesson applies
+  - "content": 2-4 sentence detailed guidance, including the failure mode and the recovery
+
+# Output format
+Return ONLY a valid JSON array. No markdown fences, no surrounding prose.
+
+Example:
+[
+  {{"title": "Do not retry idempotent-unsafe operations on timeout",
+    "description": "Apply when a tool call times out mid-write.",
+    "content": "A timeout does not guarantee the operation failed — the write may still land. Blindly retrying causes duplicate state. Instead, query the target system to determine actual state before deciding whether to retry."}}
+]

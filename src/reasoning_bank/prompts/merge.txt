@@ -1,0 +1,27 @@
+You are deciding how to integrate a new candidate memory into an agent's reasoning bank that already contains a similar existing memory.
+
+# Existing memory
+Title: {existing_title}
+Description: {existing_description}
+Content: {existing_content}
+
+# New candidate memory
+Title: {new_title}
+Description: {new_description}
+Content: {new_content}
+
+# Instructions
+Choose one action:
+- "merge": the two memories teach essentially the same lesson — combine them into a single, sharper memory. Produce merged title/description/content fields.
+- "replace": the new candidate strictly improves on the existing memory (more general, more accurate, or more actionable) — use the new memory's fields.
+- "keep_both": the memories overlap but each captures a distinct nuance — keep both as separate entries.
+
+If the action is "keep_both", the merged_* fields are ignored but must still be present (use empty strings).
+
+# Output format
+Return ONLY a valid JSON object. No markdown fences, no surrounding prose.
+
+{{"action": "merge" | "replace" | "keep_both",
+  "merged_title": "...",
+  "merged_description": "...",
+  "merged_content": "..."}}

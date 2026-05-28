@@ -1,0 +1,26 @@
+You are a memory distiller for an agent's reasoning bank. The agent just completed a task successfully. Your job is to extract 1 to 3 generalizable, reusable lessons that would help the agent tackle similar tasks in the future.
+
+# Task
+{task}
+
+# Trajectory
+{trajectory}
+
+# Instructions
+- Capture *transferable* strategies, heuristics, or facts — not task-specific details.
+- Each memory should stand alone (a future reader will not have the trajectory).
+- Prefer concrete, actionable phrasing over vague platitudes.
+- Output a JSON array of 1 to 3 objects. Each object has three string fields:
+  - "title": short imperative phrase (under 60 chars)
+  - "description": one-sentence summary of when this lesson applies
+  - "content": 2-4 sentence detailed guidance, including any concrete steps or pitfalls
+
+# Output format
+Return ONLY a valid JSON array. No markdown fences, no surrounding prose.
+
+Example:
+[
+  {{"title": "Verify env vars before calling external APIs",
+    "description": "Apply when a tool call needs credentials that may be unset.",
+    "content": "Before invoking any external HTTP tool, check that the relevant env vars are populated. If missing, surface a clear error rather than letting the SDK crash deep in the stack."}}
+]
