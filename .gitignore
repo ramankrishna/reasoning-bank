@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+wheels/
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.coverage.*
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Env files
+.env
+.env.local
+
+# macOS
+.DS_Store
+
+# Reasoning-bank local data
+~/.reasoning_bank/
+.reasoning_bank/
+
+# Editor
+.vscode/
+.idea/
+*.swp
