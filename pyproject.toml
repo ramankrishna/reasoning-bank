@@ -1,6 +1,6 @@
 [project]
 name = "reasoning-bank"
-version = "0.1.0"
+version = "0.1.1"
 description = "Framework-agnostic implementation of ReasoningBank (Ouyang et al., ICLR 2026): agents that learn from successful and failed trajectories, with memory-aware test-time scaling (MaTTS)."
 authors = [{ name = "Rama Krishna Bachu", email = "ram@bottensor.xyz" }]
 license = { text = "Apache-2.0" }
@@ -39,6 +39,14 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/reasoning_bank"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "src/reasoning_bank",
+  "README.md",
+  "LICENSE",
+  "pyproject.toml",
+]
 
 [tool.ruff]
 line-length = 100

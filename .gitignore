@@ -35,3 +35,14 @@ env/
 .vscode/
 .idea/
 *.swp
+
+# experiment runtime artifacts (keep code + RESULTS.md, not raw data dumps)
+experiments/**/run_data/
+experiments/**/results/
+experiments/**/__pycache__/
+experiments/swebench/all_instances.json
+experiments/swebench/phase3_instances.json
+experiments/swebench/probe_instances.json
+*.sqlite
+gold.prebuild_*.json
+haiku-*-agent.*.json
